@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Apple(weight) {
+        this.weight = 10;
+        this.decrease = function () {
+            this.weight--;
+        };
+        this.isEmpty = function () {
+            if (this.weight >= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        this.getweight = function () {
+            return this.weight;
+        }
+    }
+
+    function Human(name, gender, weight) {
+        this.name = name;
+        this.gender = gender;
+        this.weight = weight;
+        this.isMale = function () {
+            if (this.gender === 'Male') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        this.setGender = function (gender) {
+            this.gender = gender;
+        };
+        this.checkApple = function (apple) {
+            apple.isEmpty();
+        };
+        this.eat = function (apple) {
+            apple.decrease();
+            this.weight++;
+        };
+        this.say = function (mess) {
+            alert(this.name + mess);
+        };
+        this.getname = function () {
+            return this.name;
+        };
+        this.setname = function (name) {
+            this.name = name();
+        };
+        this.getweight = function () {
+            return this.weight;
+        };
+        this.setweight = function (weight) {
+            this.weight = weight;
+        };
+    }
+
+    let Adam = new Human('Adam', 'Male', 50);
+    let Eva = new Human('Eva', 'Female', 40);
+    let apple = new Apple();
+    if (Adam.isMale()) {
+        Adam.say("là con trai ");
+    } else {
+        Adam.say("là con gái");
+    }
+    if (Eva.isMale()) {
+        Eva.say("là con trai ");
+    } else {
+        Eva.say("là con gái");
+    }
+    let cout = 1;
+    while (apple.weight > 0) {
+        if (cout == 1) {
+            Adam.eat(apple);
+            if(apple.getweight()==0){
+                alert("Hết táo");
+                break;
+            }
+            cout = 2;
+            alert("Next is Eva " + " táo còn " + apple.getweight());
+        } else {
+            Eva.eat(apple);
+            if(apple.getweight()==0){
+                alert("Hết táo");
+                break;
+            }
+            cout = 1;
+            alert("Next is Adam " + " táo còn " + apple.getweight());
+        }
+    }
+    alert("Adam nặng " + Adam.getweight());
+    alert("Eva nặng " + Eva.getweight());
+</script>
+</body>
+</html>
